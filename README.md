@@ -10,7 +10,7 @@ QoS enabled firmware! You have to recompile firmware with `CONFIG_FIRMWARE_INCLU
 
 * [Install Entware](https://bitbucket.org/padavan/rt-n56u/wiki/EN/HowToConfigureEntware).
 * Disable hardware acceleration at `WAN` WebUI page.
-* Assign IP for chosen clients manually at `LAN > DHCP server > Manually Assigned IP around the DHCP List` page.
+* Assign IP addresses for chosen clients manually at `LAN > DHCP server > Manually Assigned IP around the DHCP List` page.
 * Install `tc` utility from console:
 ```
 opkg install tc-legacy
