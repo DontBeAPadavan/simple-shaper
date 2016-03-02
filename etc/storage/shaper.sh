@@ -6,13 +6,10 @@
 WAN=br0
 
 # Load imq module if necessary
-[ -z "$(lsmod | grep imq)" ] && insmod imq
+[ -z "$(lsmod | grep imq)" ] && modprobe imq
 
 # Clean shaper settings
 tc qdisc del dev $WAN root
-
-# Apply shaper at start only
-[ "x$1" = "xstart" ] || exit
 
 # HTB queuing discipline used, see guide at http://luxik.cdi.cz/~devik/qos/htb/manual/userg.htm
 tc qdisc add dev $WAN root handle 1: htb default 90
