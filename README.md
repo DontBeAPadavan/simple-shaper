@@ -8,20 +8,19 @@ QoS enabled firmware! You have to recompile firmware with `CONFIG_FIRMWARE_INCLU
 
 ### Installation
 
-* [Install Entware](https://bitbucket.org/padavan/rt-n56u/wiki/EN/HowToConfigureEntware).
 * Disable hardware acceleration at `WAN` WebUI page.
 * Assign IP addresses for chosen clients manually at `LAN > DHCP server > Manually Assigned IP around the DHCP List` page.
-* Install `tc` utility from console:
+* Download shaper script from console and make it executable:
 ```
-opkg install tc-legacy
+wget --no-check-certificate -O /etc/storage/shaper.sh https://raw.githubusercontent.com/DontBeAPadavan/simple-shaper/master/etc/storage/shaper.sh
+chmod +x /etc/storage/shaper.sh
 ```
-* Download shaper script and make it executable:
+* Edit `/etc/storage/shaper.sh` for your needs.
+* Add following line to `Run After Router Started` field at `Customization > Scripts` WebUI page:
 ```
-wget --no-check-certificate -O /opt/etc/init.d/S10shaper https://raw.githubusercontent.com/DontBeAPadavan/simple-shaper/master/opt/etc/init.d/S10shaper
-chmod +x /opt/etc/init.d/S10shaper
+/etc/storage/shaper.sh
 ```
-* Edit `/opt/etc/init.d/S10shaper` for your needs.
 * Reboot router or (re)start shaper manually:
 ```
-/opt/etc/init.d/S10shaper start
+/etc/storage/shaper.sh
 ```
